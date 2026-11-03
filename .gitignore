@@ -4,7 +4,7 @@
 # Local configuration and tool state
 .env
 .env.*
-.env.example
+!.env.example
 .freebuff/
 
 # Local reference corpus (books, specs, duplicate archives)
@@ -21,3 +21,6 @@
 # Python
 __pycache__/
 *.py[cod]
+
+# Local-only submission paperwork
+/(Ext) BYOP - Project submission instructions.pdf
