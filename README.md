@@ -20,8 +20,19 @@ several independent gates to be opened deliberately.
   `BINANCE_ENABLE_LIVE_ORDERS=false`, plus a required gate file and kill-switch check.
 - **Data:** generated archives, the warehouse, and experiment reports are **not** committed
   (see [`.gitignore`](.gitignore)); they are reproducible from Binance's public data.
-- **History:** the repository is a personal project maintained in the open. See
-  [ROADMAP.md](ROADMAP.md) for planned work.
+- **Roadmap:** see [ROADMAP.md](ROADMAP.md) for planned work and the current state of each
+  item.
+
+## Development history
+
+This is a personal project that was developed locally and published to GitHub on 2026-11-03.
+The commit log therefore starts at that import: the first commits contain the project as it
+stood on publication day, and the earlier local development is not represented
+commit-by-commit. No history was squashed, rewritten, or re-uploaded from a previous
+repository, and every commit is authored by the repository owner. The tree is original work;
+the only third-party code included is the attributed `binance-public-data` reference snapshot
+under `research/` (see its [NOTICE](research/binance-public-data-master/NOTICE.md)). Work
+after publication is added as ordinary incremental commits.
 
 ## What it does
 
