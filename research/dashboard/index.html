@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17251f" />
+    <title>Pocket Quant Control Room</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">✦</div>
+          <div>
+            <p class="eyebrow">POCKET QUANT CONTROL ROOM</p>
+            <h1>My little market robot</h1>
+          </div>
+        </div>
+        <div class="connection-pill" id="connection-pill">
+          <span class="dot"></span>
+          <span id="connection-label">Not watching</span>
+        </div>
+      </header>
+
+      <section class="hero-card">
+        <div class="hero-copy">
+          <p class="eyebrow warm">ONE BIG BUTTON</p>
+          <h2>Let’s look at the market together.</h2>
+          <p class="hero-text">The robot can watch prices, check its rules, and show what it knows. It will not spend money unless every safety lock says yes.</p>
+        </div>
+        <button class="primary-action" id="start-button" data-action="start-safe-mode">
+          <span class="button-icon">▶</span>
+          <span>Start watching</span>
+        </button>
+        <p class="button-note" id="start-note">Safe mode: watching only</p>
+      </section>
+
+      <section class="status-grid" aria-label="Robot status">
+        <article class="status-card market-card">
+          <div class="card-topline"><span class="card-kicker">MARKET</span><span class="status-badge neutral" id="market-badge">WAITING</span></div>
+          <h3 id="price-value">—</h3>
+          <p id="price-subtitle">Press Start watching to see BTC/USDT.</p>
+          <div class="mini-stats">
+            <div><span>Best buy</span><strong id="best-bid">—</strong></div>
+            <div><span>Best sell</span><strong id="best-ask">—</strong></div>
+            <div><span>Spread</span><strong id="spread-value">—</strong></div>
+          </div>
+        </article>
+
+        <article class="status-card safety-card">
+          <div class="card-topline"><span class="card-kicker">SAFETY</span><span class="status-badge danger" id="safety-badge">LOCKED</span></div>
+          <h3 id="safety-title">Money is protected</h3>
+          <p id="safety-subtitle">Real orders are locked while the robot learns.</p>
+          <ul class="check-list" id="safety-list">
+            <li><span class="check-dot"></span><span>Live orders are off</span></li>
+            <li><span class="check-dot"></span><span>Human stop button is ready</span></li>
+            <li><span class="check-dot"></span><span>Research gate is checked</span></li>
+          </ul>
+        </article>
+
+        <article class="status-card account-card">
+          <div class="card-topline"><span class="card-kicker">ACCOUNT</span><span class="status-badge neutral" id="account-badge">NOT CHECKED</span></div>
+          <h3 id="account-value">—</h3>
+          <p id="account-subtitle">Your account is never shown until you ask for a check.</p>
+          <button class="text-action" data-action="account-check">Check account safely <span>↗</span></button>
+        </article>
+        <article class="status-card engine-card">
+          <div class="card-topline"><span class="card-kicker">ROBOT</span><span class="status-badge neutral" id="engine-badge">STOPPED</span></div>
+          <h3 id="engine-mode">PAPER MODE</h3>
+          <p id="engine-subtitle">The robot is not making decisions yet.</p>
+          <div class="engine-actions">
+            <button class="small-action start" data-action="start-engine">Start robot</button>
+            <button class="small-action stop" data-action="stop-engine">Pause robot</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="main-grid">
+        <article class="panel profit-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">PROFIT WINDOW</p>
+              <h2>What is happening?</h2>
+            </div>
+            <span class="soft-label">No promises</span>
+          </div>
+          <div class="profit-empty" id="profit-empty">
+            <div class="orbit-icon" aria-hidden="true"><span>₿</span></div>
+            <h3>No profit number yet</h3>
+            <p>First we watch. Then we measure. A moving price is not the same as a profit.</p>
+          </div>
+          <div class="profit-details hidden" id="profit-details">
+            <div class="big-number"><span id="live-price">—</span><small>USDT per BTC</small></div>
+            <div class="profit-row"><span>Robot mode</span><strong id="robot-mode">Watching</strong></div>
+            <div class="profit-row"><span>Last update</span><strong id="last-update">—</strong></div>
+            <div class="profit-row"><span>Account value change</span><strong id="account-change" class="muted-value">Not checked</strong></div>
+            <p class="tiny-note" id="account-note">This is an estimate, not a promise of profit.</p>
+          </div>
+        </article>
+
+        <article class="panel action-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">EASY ACTIONS</p>
+              <h2>Choose one thing</h2>
+            </div>
+          </div>
+          <div class="action-list">
+            <button class="action-tile" data-action="public-check"><span class="tile-icon blue">◎</span><span><b>Check Binance</b><small>Is the market door open?</small></span><span class="arrow">›</span></button>
+            <button class="action-tile" data-action="run-research-tests"><span class="tile-icon purple">✎</span><span><b>Check the robot’s homework</b><small>Run all safety tests</small></span><span class="arrow">›</span></button>
+            <button class="action-tile" data-action="connect-market"><span class="tile-icon green">⌁</span><span><b>Watch live prices</b><small>Read-only market connection</small></span><span class="arrow">›</span></button>
+            <button class="action-tile" data-action="test-order"><span class="tile-icon gold">◇</span><span><b>Practice an order</b><small>Test only, no matching engine</small></span><span class="arrow">›</span></button>
+            <button class="action-tile" data-action="start-account-events"><span class="tile-icon blue">◌</span><span><b>Watch account updates</b><small>See order events safely</small></span><span class="arrow">›</span></button>
+          </div>
+        </article>
+      </section>
+
+      <section class="decision-panel panel" aria-label="Robot decision">
+        <div class="panel-heading">
+          <div><p class="eyebrow">LATEST DECISION</p><h2 id="decision-action">HOLD</h2></div>
+          <span class="status-badge neutral" id="decision-confidence">0% confidence</span>
+        </div>
+        <div class="decision-grid">
+          <div><span>Signal</span><strong id="decision-strategy">No signal yet</strong></div>
+          <div><span>Expected net result</span><strong id="decision-value">—</strong></div>
+          <div><span>Position</span><strong id="decision-position">Flat</strong></div>
+          <div><span>Risk status</span><strong id="decision-risk">Waiting</strong></div>
+        </div>
+        <p class="tiny-note" id="decision-reason">The robot will explain its last decision here.</p>
+      </section>
+
+      <section class="tutorial-panel panel" id="tutorial-panel">
+        <div class="tutorial-header">
+          <div class="tutorial-bubble" aria-hidden="true">?</div>
+          <div><p class="eyebrow">TINY TUTORIAL</p><h2>How does the robot work?</h2></div>
+          <button class="collapse-button" id="tutorial-toggle" aria-expanded="true">Hide</button>
+        </div>
+        <div class="tutorial-content" id="tutorial-content">
+          <div class="tutorial-step active"><span>1</span><div><b>Look</b><p>Press the big green button. The robot watches, but keeps its wallet closed.</p></div></div>
+          <div class="tutorial-step"><span>2</span><div><b>Check</b><p>Use the small buttons to ask simple questions about the market and the robot.</p></div></div>
+          <div class="tutorial-step"><span>3</span><div><b>Stop</b><p>If anything feels wrong, press the red button. Stop means stop.</p></div></div>
+          <div class="tutorial-step"><span>4</span><div><b>Remember</b><p>A green price is not a promise. We only use real money after careful tests.</p></div></div>
+        </div>
+      </section>
+
+      <section class="research-strip">
+        <div><p class="eyebrow">ROBOT HOMEWORK</p><h2>Evidence before excitement</h2><p>These cards show what has really been tested.</p></div>
+        <div class="homework-cards">
+          <div class="homework-card"><span class="homework-icon">✓</span><div><b id="research-tests">—</b><small>research tests</small></div></div>
+          <div class="homework-card"><span class="homework-icon">◌</span><div><b id="research-gate">—</b><small>live-money gate</small></div></div>
+          <div class="homework-card"><span class="homework-icon">⌁</span><div><b id="research-data">—</b><small>historical data</small></div></div>
+        </div>
+      </section>
+
+      <button class="kill-switch" id="kill-button" data-action="kill-switch"><span class="stop-square">■</span><span><b>Stop everything</b><small>Emergency stop</small></span></button>
+
+      <footer><span>Local control room · Binance Spot · BTCUSDT</span><span id="footer-time">UTC —</span></footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

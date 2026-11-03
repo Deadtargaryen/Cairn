@@ -1,0 +1,23 @@
+# OS noise
+.DS_Store
+
+# Local configuration and tool state
+.env
+.env.*
+.env.example
+.freebuff/
+
+# Local reference corpus (books, specs, duplicate archives)
+/materials/
+
+# Generated market data and run artifacts
+/research/raw/
+/research/experiments/
+/research/runtime/
+/research/warehouse.sqlite
+/research/warehouse.sqlite-*
+/research/BTCUSDT-*.csv
+
+# Python
+__pycache__/
+*.py[cod]

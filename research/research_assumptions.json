@@ -1,0 +1,122 @@
+{
+  "knowledge_base_registry": "research/knowledge_base_references.json",
+  "purpose": "Machine-readable source checks for deterministic research components. Proxies are explicit and are not claims about unobserved market state.",
+  "assumptions": [
+    {
+      "id": "binance_kline_schema",
+      "sources": [
+        {
+          "path": "research/binance-public-data-master/README.md",
+          "location": "lines 20-29"
+        }
+      ],
+      "rule": "Use Binance spot klines as 12-column exchange observations, preserving the published open time, close time, OHLC, volume, trade count, and taker-volume fields."
+    },
+    {
+      "id": "binance_timestamp_units",
+      "sources": [
+        {
+          "path": "research/binance-public-data-master/README.md",
+          "location": "lines 9-11"
+        }
+      ],
+      "rule": "Interpret spot timestamps before 2025-01-01 as milliseconds and timestamps from 2025-01-01 as microseconds, then store normalized event time as integer UTC microseconds."
+    },
+    {
+      "id": "archive_integrity",
+      "sources": [
+        {
+          "path": "research/binance-public-data-master/README.md",
+          "location": "lines 88-101"
+        }
+      ],
+      "rule": "Require the published SHA-256 sidecar and ZIP integrity before ingesting an archive; retain raw bytes and provenance."
+    },
+    {
+      "id": "event_time_not_processing_time",
+      "sources": [
+        {
+          "path": "materials/Designing Data Intensive Applications/Designing Data Intensive Applications.pdf",
+          "location": "PDF page 491-494, Stream Processing: event time and processing time"
+        }
+      ],
+      "rule": "Use exchange event timestamps for chronological partitions and features; local retrieval or processing time must not enter historical signals."
+    },
+    {
+      "id": "derived_data_and_reprocessing",
+      "sources": [
+        {
+          "path": "materials/Designing Data Intensive Applications/Designing Data Intensive Applications.pdf",
+          "location": "PDF page 408, Systems of Record and Derived Data; PDF page 514, deterministic and idempotent derived state"
+        }
+      ],
+      "rule": "Treat the raw archive and normalized warehouse as auditable source/derived layers; derived results must be reproducible from immutable inputs."
+    },
+    {
+      "id": "integrity_and_atomic_outputs",
+      "sources": [
+        {
+          "path": "materials/Designing Data Intensive Applications/Designing Data Intensive Applications.pdf",
+          "location": "PDF page 539, exactly-once/idempotence; PDF page 547-554, integrity and auditability"
+        },
+        {
+          "path": "materials/bitcoinbook-develop/ch14_applications.adoc",
+          "location": "lines 84-96"
+        }
+      ],
+      "rule": "Write derived artifacts atomically, preserve checksums and provenance, and fail closed on integrity violations rather than silently repairing source observations."
+    },
+    {
+      "id": "explicit_transaction_costs",
+      "sources": [
+        {
+          "path": "materials/bitcoinbook-develop/ch09_fees.adoc",
+          "location": "lines 48-58 and 87-95"
+        },
+        {
+          "path": "materials/Trading and Exchanges. Market Microstructure for Practitioners---[ForexFinest]--.pdf",
+          "location": "available locally; page-level extraction is currently unavailable"
+        }
+      ],
+      "rule": "Never use a zero-cost backtest. Because this dataset has no historical bid/ask or queue state, spread, slippage, and impact are conservative OHLCV proxies and must not be presented as observed execution costs."
+    },
+    {
+      "id": "provisional_network_state",
+      "sources": [
+        {
+          "path": "materials/bitcoinbook-develop/ch10_network.adoc",
+          "location": "lines 1208-1249"
+        },
+        {
+          "path": "materials/bitcoinbook-develop/ch11_blockchain.adoc",
+          "location": "lines 56-67 and 149-152"
+        }
+      ],
+      "rule": "Do not conflate exchange market-data timestamps with blockchain confirmation state or consensus timestamps; protocol/on-chain signals require separate data and confirmation modeling."
+    },
+    {
+      "id": "volume_is_not_orderbook_liquidity",
+      "sources": [
+        {
+          "path": "materials/Trading and Exchanges. Market Microstructure for Practitioners---[ForexFinest]--.pdf",
+          "location": "available locally; page-level extraction is currently unavailable"
+        },
+        {
+          "path": "research/binance-public-data-master/README.md",
+          "location": "kline schema and published fields"
+        }
+      ],
+      "rule": "Kline volume and quote volume are participation/activity proxies only; without historical depth, bid/ask, cancellations, and queue state, do not label them as executable liquidity or infer order-book pressure."
+    },
+    {
+      "id": "fixed_diagnostic_hypotheses",
+      "sources": [
+        {
+          "path": "research/knowledge_base_references.json",
+          "location": "local source registry and explicit unresolved-source statuses"
+        }
+      ],
+      "rule": "Signal diagnostics use predeclared hypotheses and chronological evaluation; parameter search, hindsight selection, and live deployment are separate stages and are not implied by a conditional-return result."
+    }
+  ]
+}

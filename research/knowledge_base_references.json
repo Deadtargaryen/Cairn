@@ -1,0 +1,73 @@
+{
+  "corpus_root": "/Users/mac/Desktop/crypto/materials",
+  "purpose": "Traceable local references for research-system assumptions; this registry does not claim that every corpus item has been read in full.",
+  "references": [
+    {
+      "path": "research/binance-public-data-master/README.md",
+      "scope": "archive layout, kline schema, supported intervals, timestamp-unit transition, checksum procedure",
+      "status": "inspected",
+      "implementation_use": "Defines the source URL layout, 12-column kline contract, and checksum verification policy."
+    },
+    {
+      "path": "research/binance-public-data-master/python/README.md",
+      "scope": "official downloader arguments and monthly/daily retrieval behavior",
+      "status": "inspected",
+      "implementation_use": "Defines supported market types, date ranges, and archive retrieval workflow."
+    },
+    {
+      "path": "research/binance-public-data-master/python/download-kline.py",
+      "scope": "reference downloader implementation",
+      "status": "inspected",
+      "implementation_use": "Used as the reference for archive naming and monthly/daily source paths; a separate resumable downloader handles atomic writes and retries."
+    },
+    {
+      "path": "materials/bitcoinbook-develop/ch09_fees.adoc",
+      "scope": "fee rates, scarce block space, provisional transaction inclusion",
+      "status": "inspected",
+      "implementation_use": "Supports modeling transaction costs explicitly and treating unconfirmed state as provisional."
+    },
+    {
+      "path": "materials/bitcoinbook-develop/ch10_network.adoc",
+      "scope": "mempool locality and temporary node state",
+      "status": "inspected",
+      "implementation_use": "Supports separating temporary/provisional observations from durable normalized state."
+    },
+    {
+      "path": "materials/bitcoinbook-develop/ch11_blockchain.adoc",
+      "scope": "blockchain ordering, confirmation depth, reorganizations, approximate timestamps",
+      "status": "inspected",
+      "implementation_use": "Supports retaining source timestamps and provenance rather than treating protocol timestamps as exact universal event time."
+    },
+    {
+      "path": "materials/bitcoinbook-develop/ch12_mining.adoc",
+      "scope": "topological transaction order and consensus-derived ordering",
+      "status": "inspected",
+      "implementation_use": "Supports distinguishing exchange feed ordering from consensus ordering in future protocol-data work."
+    },
+    {
+      "path": "materials/bitcoinbook-develop/ch14_applications.adoc",
+      "scope": "replication, durability, consistency, atomicity, confirmation risk",
+      "status": "inspected",
+      "implementation_use": "Supports durable warehouse construction, atomic output replacement, and explicit validation state."
+    },
+    {
+      "path": "materials/Trading and Exchanges. Market Microstructure for Practitioners---[ForexFinest]--.pdf",
+      "scope": "market microstructure and execution theory",
+      "status": "available_but_not_page_extracted",
+      "implementation_use": "Reserved as a primary conceptual reference for spread, liquidity, price formation, and execution modeling; page-level claims require targeted extraction."
+    },
+    {
+      "path": "materials/Designing Data Intensive Applications/Designing Data Intensive Applications.pdf",
+      "scope": "data systems, durability, consistency, stream/batch processing",
+      "status": "targeted_pages_inspected",
+      "evidence": "PDF pages 408, 491-492, 514, 539, 547, 552-554",
+      "implementation_use": "Supports event-time ordering, deterministic/idempotent derived data, integrity checks, auditability, and atomic durable outputs."
+    },
+    {
+      "path": "materials/Mastering Bitcoin_ Programming the Open Blockchain, 3rd Edition by Andreas M. Antonopoulos EPUB/Mastering Bitcoin_ Programming the Open Blockchain, 3rd Edition by Andreas M. Antonopoulos.epub",
+      "scope": "Bitcoin protocol and transaction systems",
+      "status": "available_but_not_directly_extracted",
+      "implementation_use": "Use only for protocol-context cross-checks after extracting the relevant chapter or source counterpart."
+    }
+  ]
+}
